@@ -8,3 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 # coding-project-template
+npm install
+npm install react-redux
+npm install @reduxjs/toolkit
+npm run dev
