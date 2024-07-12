@@ -14,17 +14,18 @@ const ShoppingCart = () => {
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   
   // Event Handlers
-  const handleRemoveItem = itemId => {
-    dispatch(removeItemFromCart(itemId));
+  const handleRemoveItem = (product) => {
+    dispatch(removeItemFromCart(product));
   };
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-  const handleIncreaseQuantity = itemId => {
-    dispatch(increaseItemQuantity(itemId));
+  const handleIncreaseQuantity = productItem => {
+    dispatch(increaseItemQuantity(productItem));
+    console.log(productItem);
   };
-  const handleDecreaseQuantity = itemId => {
-    dispatch(decreaseItemQuantity(itemId));
+  const handleDecreaseQuantity = productItem => {
+    dispatch(decreaseItemQuantity(productItem));
   };
 
   return (
@@ -34,22 +35,22 @@ const ShoppingCart = () => {
       <ul className="cart-items">
         {/* Redering */}
         {cartItems.map(item => (
-          <li key={item.id} className="cart-item">
+          <li key={item.pro} className="cart-item">
             <span> 
               {item.name} - ${item.price}
             </span>
             <div className="quantity-controls">
-              <button className="quantity-control-btn" onClick={() => handleDecreaseQuantity(item.id)}>
+              <button className="quantity-control-btn" onClick={() => handleDecreaseQuantity(item.pro)}>
                 -
               </button>
               <span> 
                 {item.quantity} 
               </span>
-              <button className="quantity-control-btn" onClick={() => handleIncreaseQuantity(item.id)}>
+              <button className="quantity-control-btn" onClick={() => handleIncreaseQuantity(item.pro)}>
                 +
               </button>
             </div>
-            <button className="remove-item-btn" onClick={() => handleRemoveItem(item.id)}>
+            <button className="remove-item-btn" onClick={() => handleRemoveItem(item.pro)}>
               Remove
             </button>
           </li>
